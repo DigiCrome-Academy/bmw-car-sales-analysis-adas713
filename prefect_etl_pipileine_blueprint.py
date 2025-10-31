@@ -75,6 +75,7 @@ def transform_data(df: pd.DataFrame) -> pd.DataFrame:
             
     # 4. Filter/Validate: Ensure the transformed DF contains the expected columns
     final_df = df[EXPECTED_COLUMNS]
+    final_df["ingested_at"] = pd.Timestamp.utcnow()
     
     logging.info(f"Transformation complete. Cleaned data shape: {final_df.shape}")
     return final_df
